@@ -14,6 +14,12 @@ RSpec.describe Say do
       expect{Say.new(MAX_NUMBER+1).in_english}.to raise_error(ArgumentError)
     end
 
+    it "appends teen for 13 through 19" do
+      (13..19).each do |i|
+        expect(Say.new(i).in_english).to match(/teen$/)
+      end
+    end
+
     it "says zero" do
       expect(Say.new(0).in_english ).to eq("zero")
     end
